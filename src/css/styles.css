@@ -1,18 +1,104 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
 /* Common styles */
-@import url('./reset.css');
-@import url('./base.css');
 @import url('./container.css');
-@import url('./animations.css');
+@import 'izitoast/dist/css/iziToast.min.css';
+@import 'simplelightbox/dist/simple-lightbox.min.css';
 
 /* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+.form {
+  width: 371px;
+  max-height: 40px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.gallery {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-img {
+  object-fit: cover;
+  display: block;
+  width: 360px;
+  height: 200px;
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.search-input {
+  font-weight: 400;
+  color: #808080;
+  border-radius: 4px;
+  width: 272px;
+  height: 40px;
+  padding-left: 15px;
+  border: 0.7px solid #808080;
+}
+
+.search-input:hover {
+  border: 1px solid #303030;
+}
+
+.search-btn {
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 91px;
+  height: 40px;
+  font-weight: 500;
+  background: #4e75ff;
+  color: #fff;
+  border: none;
+  transition: background-color 250ms linear;
+}
+
+.search-btn:hover {
+  background-color: #6c8cff;
+}
+
+/*.gallery-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.image-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  background-color: #f8f8f8;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.image-stats p {
+  margin: 0;
+  text-align: center;
+  color: #333;
+}
+
+.image-stats b {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}*/
