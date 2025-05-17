@@ -13,22 +13,9 @@
   justify-content: center;
   margin: 0 auto;
   margin-bottom: 40px;
-}
-
-.gallery {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  align-items: center;
-  justify-content: center;
-}
-
-.gallery-img {
-  object-fit: cover;
-  display: block;
-  width: 360px;
-  height: 200px;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
 }
 
 ul {
@@ -68,37 +55,87 @@ ul {
   background-color: #6c8cff;
 }
 
-/*.gallery-item {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+.gallery {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
 }
 
-.gallery-link img {
+.gallery-item {
+  border: 1px solid #808080;
+}
+
+.gallery-img {
+  object-fit: cover;
   display: block;
-  width: 100%;
-  height: auto;
+  width: 360px;
+  height: 152px;
 }
 
 .image-stats {
   display: flex;
   justify-content: space-around;
-  padding: 12px 0;
-  background-color: #f8f8f8;
-  font-family: sans-serif;
-  font-size: 14px;
+  padding: 4px 0;
 }
 
 .image-stats p {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   text-align: center;
   color: #333;
+  font-weight: 400;
+  font-size: 12px;
 }
 
 .image-stats b {
-  display: block;
+  margin-bottom: -10px;
   font-weight: 600;
-  margin-bottom: 4px;
-}*/
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
+
+.loader:after {
+  content: '';
+  background: #18dc7a;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  transform-origin: -16px -32px;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0%,
+  100% {
+    transform: rotate(-45deg) translate(-50%, -50%);
+  }
+  50% {
+    transform: rotate(-245deg) translate(-50%, -50%);
+  }
+}

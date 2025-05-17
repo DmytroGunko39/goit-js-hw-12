@@ -1,6 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
 
 const gallery = document.querySelector('.js-gallery');
+const loaderContainer = document.querySelector('.loader-container');
 
 let lightbox = null;
 
@@ -51,4 +52,14 @@ export function renderGallery(hits) {
 //Function - clear galleries
 export function clearGallery() {
   gallery.innerHTML = '';
+}
+
+// function show loader
+export function showLoader() {
+  loaderContainer.classList.remove('hidden');
+}
+
+//function hide loader
+export function hideLoader() {
+  loaderContainer.classList.add('hidden');
 }
