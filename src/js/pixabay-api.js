@@ -1,18 +1,19 @@
 import axios from 'axios';
 
 const API_KEY = '50304425-dc6600d3dd72044e5b60da34e';
-axios.defaults.baseURL = 'https://pixabay.com/api/';
+export const IMAGES_PER_PAGE = 15;
 
-export const getImagesByQuery = query => {
-  const data = axios.get('', {
+axios.defaults.baseURL = 'https://pixabay.com';
+
+export const getImagesByQuery = (query, currentPage) =>
+  axios.get(`/api/`, {
     params: {
       key: API_KEY,
       q: query,
       image_type: 'photo',
-      per_page: '9',
+      page: currentPage,
+      per_page: IMAGES_PER_PAGE,
       orientation: 'horizontal',
       safesearch: true,
     },
   });
-  return data;
-};

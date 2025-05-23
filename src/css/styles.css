@@ -45,9 +45,13 @@ ul {
   width: 91px;
   height: 40px;
   font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
   background: #4e75ff;
   color: #fff;
   border: none;
+  cursor: pointer;
   transition: background-color 250ms linear;
 }
 
@@ -73,6 +77,29 @@ ul {
   display: block;
   width: 360px;
   height: 152px;
+}
+
+.load-more-btn {
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-top: 32px;
+  width: 125px;
+  height: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  background: #4e75ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 250ms linear;
+}
+
+.load-more-btn:hover {
+  background-color: #6c8cff;
 }
 
 .image-stats {

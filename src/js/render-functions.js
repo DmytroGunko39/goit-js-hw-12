@@ -1,11 +1,14 @@
 import SimpleLightbox from 'simplelightbox';
 
-const gallery = document.querySelector('.js-gallery');
-const loaderContainer = document.querySelector('.loader-container');
+const refs = {
+  gallery: document.querySelector('.js-gallery'),
+  loaderContainer: document.querySelector('.loader-container'),
+  loadMoreBtn: document.querySelector('.load-more-btn'),
+};
 
 let lightbox = null;
 
-const createGallery = ({
+export const createGallery = ({
   webformatURL: src,
   tags: alt,
   largeImageURL: href,
@@ -36,10 +39,10 @@ const createGallery = ({
 // Function to render the all gallery
 export function renderGallery(hits) {
   const galleryCardsMarkup = hits.map(createGallery).join('');
-  gallery.innerHTML = galleryCardsMarkup;
+  refs.gallery.innerHTML = galleryCardsMarkup;
 
-  // Oновлюємо SimpleLightbox
   if (lightbox) {
+    // Oновлюємо SimpleLightbox
     lightbox.refresh();
   } else {
     lightbox = new SimpleLightbox('.js-gallery a', {
@@ -51,15 +54,22 @@ export function renderGallery(hits) {
 
 //Function - clear galleries
 export function clearGallery() {
-  gallery.innerHTML = '';
+  refs.gallery.innerHTML = '';
 }
 
 // function show loader
 export function showLoader() {
-  loaderContainer.classList.remove('hidden');
+  refs.loaderContainer.classList.remove('hidden');
 }
-
 //function hide loader
 export function hideLoader() {
-  loaderContainer.classList.add('hidden');
+  refs.loaderContainer.classList.add('hidden');
+}
+
+//function
+export function showLoadMoreButton() {
+  refs.loadMoreBtn.classList.remove('hidden');
+}
+export function hideLoadMoreButton() {
+  refs.loadMoreBtn.classList.add('hidden');
 }
