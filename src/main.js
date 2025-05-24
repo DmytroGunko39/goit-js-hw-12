@@ -68,11 +68,20 @@ const onSearchForm = async event => {
     } else {
       showLoadMoreButton();
     }
-
     refs.searchForm.reset(); //clearing input
-    refs.loadMoreBtn.removeEventListener('click', onLoadMoreBtn);
-    refs.loadMoreBtn.addEventListener('click', onLoadMoreBtn);
   } catch (err) {
+    iziToast.error({
+      title: '',
+      message:
+        'Oops! Error occurred while fetching data. Please try again later.',
+      position: 'topRight',
+      iconUrl: iconError,
+      timeout: 4000,
+      titleColor: '#fff',
+      backgroundColor: '#ef4040',
+      messageColor: '#fff',
+      backgroundColor: '#ef4040',
+    });
     console.log(err);
   } finally {
     hideLoader();
@@ -118,6 +127,16 @@ const onLoadMoreBtn = async event => {
       refs.loadMoreBtn.removeEventListener('click', onLoadMoreBtn);
     }
   } catch (err) {
+    iziToast.error({
+      title: '',
+      message: 'Failed to load more images. Please try again later.',
+      position: 'topRight',
+      iconUrl: iconError,
+      timeout: 4000,
+      titleColor: '#fff',
+      backgroundColor: '#ef4040',
+      messageColor: '#fff',
+    });
     console.log(err);
   } finally {
     hideLoader();
@@ -125,3 +144,4 @@ const onLoadMoreBtn = async event => {
 };
 
 refs.searchForm.addEventListener('submit', onSearchForm);
+refs.loadMoreBtn.addEventListener('click', onLoadMoreBtn);
