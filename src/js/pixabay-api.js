@@ -5,15 +5,22 @@ export const IMAGES_PER_PAGE = 15;
 
 axios.defaults.baseURL = 'https://pixabay.com';
 
-export const getImagesByQuery = (query, currentPage) =>
-  axios.get(`/api/`, {
-    params: {
-      key: API_KEY,
-      q: query,
-      image_type: 'photo',
-      page: currentPage,
-      per_page: IMAGES_PER_PAGE,
-      orientation: 'horizontal',
-      safesearch: true,
-    },
-  });
+export const getImagesByQuery = async (query, currentPage) => {
+  try {
+    const response = await axios.get('/api/', {
+      params: {
+        key: API_KEY,
+        q: query,
+        image_type: 'photo',
+        page: currentPage,
+        per_page: IMAGES_PER_PAGE,
+        orientation: 'horizontal',
+        safesearch: true,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};

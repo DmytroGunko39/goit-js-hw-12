@@ -7,6 +7,7 @@ import {
   hideLoader,
   showLoadMoreButton,
   hideLoadMoreButton,
+  refreshLightbox,
 } from './js/render-functions';
 import { getImagesByQuery, IMAGES_PER_PAGE } from './js/pixabay-api';
 import iconError from '../src/img/error-icon.svg';
@@ -33,7 +34,7 @@ const onSearchForm = async event => {
     showLoader();
     page = 1;
 
-    const { data } = await getImagesByQuery(query, page); //retrieving the data method by destructuring
+    const data = await getImagesByQuery(query, page); //retrieving the data method by destructuring
 
     if (data.hits.length === 0) {
       iziToast.error({
@@ -60,8 +61,15 @@ const onSearchForm = async event => {
 
     clearGallery();
     renderGallery(data.hits); // Rendering the gallery
+
+    //Check: If the images < required for one page
+    if (data.hits.length < IMAGES_PER_PAGE) {
+      hideLoadMoreButton();
+    } else {
+      showLoadMoreButton();
+    }
+
     refs.searchForm.reset(); //clearing input
-    showLoadMoreButton();
     refs.loadMoreBtn.removeEventListener('click', onLoadMoreBtn);
     refs.loadMoreBtn.addEventListener('click', onLoadMoreBtn);
   } catch (err) {
@@ -76,7 +84,7 @@ const onLoadMoreBtn = async event => {
   try {
     page++;
     showLoader();
-    const { data } = await getImagesByQuery(query, page);
+    const data = await getImagesByQuery(query, page);
 
     const galleryCardsMarkup = data.hits.map(createGallery).join('');
     refs.gallery.insertAdjacentHTML('beforeend', galleryCardsMarkup);
@@ -84,11 +92,14 @@ const onLoadMoreBtn = async event => {
     //---Page scrolling
     const firstNewCard = refs.gallery.lastElementChild; //Get the last item in the gallery
     await new Promise(resolve => setTimeout(resolve, 100)); // Image upload;pause
+
     const cardHeight = firstNewCard.getBoundingClientRect().height; //Calculate height
     window.scrollBy({
       top: cardHeight * 2,
       behavior: 'smooth',
     });
+    // Oновлюємо SimpleLightbox
+    refreshLightbox();
 
     //---End of collection
     const totalPages = Math.ceil(data.totalHits / IMAGES_PER_PAGE);

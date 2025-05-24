@@ -41,8 +41,12 @@ export function renderGallery(hits) {
   const galleryCardsMarkup = hits.map(createGallery).join('');
   refs.gallery.innerHTML = galleryCardsMarkup;
 
+  refreshLightbox();
+}
+
+// Oновлюємо SimpleLightbox
+export function refreshLightbox() {
   if (lightbox) {
-    // Oновлюємо SimpleLightbox
     lightbox.refresh();
   } else {
     lightbox = new SimpleLightbox('.js-gallery a', {
